@@ -12,6 +12,8 @@ Café NFT integrates with popular digital wallet platforms, allowing customers t
 
 Implement loyalty programs where customers can earn NFT collectibles or discounts based on their coffee purchases. This incentivizes repeat visits, fosters customer loyalty, and drives engagement with the café's NFT ecosystem.
 
+[Video Presentation](https://www.loom.com/share/1e07515f17134a02a559b90320c708f2?sid=a458f938-c8b2-4266-8480-7b9b263eeec7)
+
 ## Tecnologies
 
 - Supabase(Postgres, APIRest)

@@ -4,19 +4,19 @@
 
 import { serve } from "std/server"
 import { createClient } from '@supabase/supabase-js'
-import {
-  AccountId,
-  PrivateKey,
-  Client,
-  Hbar,
-  TokenCreateTransaction,
-  TokenType,
-  TokenSupplyType,
-  TokenMintTransaction,
-  TransferTransaction,
-  AccountBalanceQuery,
-  TokenAssociateTransaction
-} from '@hashgraph/sdk'
+// import {
+//   AccountId,
+//   PrivateKey,
+//   Client,
+//   Hbar,
+//   TokenCreateTransaction,
+//   TokenType,
+//   TokenSupplyType,
+//   TokenMintTransaction,
+//   TransferTransaction,
+//   AccountBalanceQuery,
+//   TokenAssociateTransaction
+// } from '@hashgraph/sdk'
 
 import { corsHeaders } from '../_shared/cors.ts'
 
@@ -24,42 +24,42 @@ interface ProductData {
   name?: string | null;
 }
 
-async function createtNft(name?: string | null) {
-  const operatorId = AccountId.fromString(Deno.env.get('HEDERA_OPERATOR_ID') || '')
-  const operatorKey = PrivateKey.fromString(Deno.env.get('HEDERA_OPERATOR_PVKEY') || '')
-  const treasuryId = AccountId.fromString(Deno.env.get('HEDERA_TREASURY_ID') || '')
-  const treasuryKey = PrivateKey.fromString(Deno.env.get('HEDERA_TREASURY_PVKEY') || '')
-  const aliceId = AccountId.fromString(Deno.env.get('HEDERA_ALICE_ID') || '')
-  const aliceKey = PrivateKey.fromString(Deno.env.get('HEDERA_ALICE_PVKEY') || '')
+// async function createtNft(name?: string | null) {
+//   const operatorId = AccountId.fromString(Deno.env.get('HEDERA_OPERATOR_ID') || '')
+//   const operatorKey = PrivateKey.fromString(Deno.env.get('HEDERA_OPERATOR_PVKEY') || '')
+//   const treasuryId = AccountId.fromString(Deno.env.get('HEDERA_TREASURY_ID') || '')
+//   const treasuryKey = PrivateKey.fromString(Deno.env.get('HEDERA_TREASURY_PVKEY') || '')
+//   const aliceId = AccountId.fromString(Deno.env.get('HEDERA_ALICE_ID') || '')
+//   const aliceKey = PrivateKey.fromString(Deno.env.get('HEDERA_ALICE_PVKEY') || '')
 
-  if (!operatorId || !operatorKey) {
-    throw new Error("Environment variables MY_ACCOUNT_ID and MY_PRIVATE_KEY must be present");
-  }
-  const client = Client.forTestnet().setOperator(operatorId, operatorKey);
+//   if (!operatorId || !operatorKey) {
+//     throw new Error("Environment variables MY_ACCOUNT_ID and MY_PRIVATE_KEY must be present");
+//   }
+//   const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 
-  const supplyKey = PrivateKey.generate();
-  if (name) {
+//   const supplyKey = PrivateKey.generate();
+//   if (name) {
 
-    const nftCreate = await new TokenCreateTransaction()
-    .setTokenName(name)
-    .setTokenSymbol("GRAD")
-    .setTokenType(TokenType.NonFungibleUnique)
-    .setDecimals(0)
-    .setInitialSupply(0)
-    .setTreasuryAccountId(treasuryId)
-    .setSupplyType(TokenSupplyType.Finite)
-    .setMaxSupply(250)
-    .setSupplyKey(supplyKey)
-    .freezeWith(client)
+//     const nftCreate = await new TokenCreateTransaction()
+//     .setTokenName(name)
+//     .setTokenSymbol("GRAD")
+//     .setTokenType(TokenType.NonFungibleUnique)
+//     .setDecimals(0)
+//     .setInitialSupply(0)
+//     .setTreasuryAccountId(treasuryId)
+//     .setSupplyType(TokenSupplyType.Finite)
+//     .setMaxSupply(250)
+//     .setSupplyKey(supplyKey)
+//     .freezeWith(client)
     
-    const nftCreateTxSign = await nftCreate.sign(treasuryKey)
-    const nftCreateSubmit = await nftCreateTxSign.execute(client)
-    const nftCreateRx = await nftCreateSubmit.getReceipt(client)
-    const tokenId = nftCreateRx.tokenId
-    return tokenId
-  }
-  return ''
-}
+//     const nftCreateTxSign = await nftCreate.sign(treasuryKey)
+//     const nftCreateSubmit = await nftCreateTxSign.execute(client)
+//     const nftCreateRx = await nftCreateSubmit.getReceipt(client)
+//     const tokenId = nftCreateRx.tokenId
+//     return tokenId
+//   }
+//   return ''
+// }
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -95,7 +95,7 @@ serve(async (req) => {
         console.log(url);
       }
     }
-    const token = await createtNft(body?.name)
+    const token = 'asasasasopopo'
     const data = {
       message: `Created NFT with Token ID: ${token}`
     }
